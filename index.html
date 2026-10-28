@@ -1,0 +1,147 @@
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Movara · Entrena en casa</title>
+  <link rel="icon" href="/img/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    /* Aplica el tema guardado, o el del navegador, antes de pintar (evita parpadeos) */
+    (function () {
+      var d = document.documentElement, t = null;
+      d.classList.add('js');
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      d.dataset.theme = t || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    })();
+  </script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="#" aria-label="Movara, inicio">
+        <img src="img/logo.svg" alt="" width="40" height="40">
+        <span class="brand__name">Movara</span>
+      </a>
+      <nav class="nav" aria-label="Principal">
+        <a href="#categorias">Categorías</a>
+        <a href="#productos">Productos</a>
+        <a href="#como-funciona">Cómo funciona</a>
+      </nav>
+      <div class="header__actions">
+        <button class="icon-btn theme-toggle" type="button" aria-pressed="false" aria-label="Activar modo noche">
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5Z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg>
+        </button>
+        <a class="btn btn--outline btn--sm" href="#">Iniciar sesión</a>
+        <a class="btn btn--primary btn--sm" href="#">Carrito (<span class="cart-count" aria-live="polite">0</span>)</a>
+      </div>
+    </div>
+  </header>
+ 
+  <main>
+    <section class="hero">
+      <div class="container hero__inner">
+        <div class="reveal">
+          <p class="pill">Entrenamiento en casa</p>
+          <h1>Empieza a entrenar en casa, sin complicarte.</h1>
+          <p class="hero__text">Material seleccionado por objetivo y nivel. Sin gimnasio, sin cuotas y sin perderte entre cientos de productos.</p>
+          <div class="hero__buttons">
+            <a class="btn btn--primary" href="#productos">Ver productos</a>
+            <a class="btn btn--outline" href="#como-funciona">Cómo funciona</a>
+          </div>
+        </div>
+        <div class="hero__media reveal" style="--i:2">
+          <img src="img/hero.svg" alt="Mancuerna, esterilla y cuerda de saltar" width="600" height="480">
+        </div>
+      </div>
+    </section>
+ 
+    <section class="section" id="categorias">
+      <div class="container">
+        <h2 class="reveal">Elige según tu objetivo</h2>
+        <p class="section__intro reveal">Un catálogo corto y filtrado, para que compres lo que necesitas.</p>
+        <div class="grid">
+          <a class="category reveal" style="--i:0" href="#productos">
+            <span class="category__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7v10M18 7v10M3 10v4M21 10v4M6 12h12"/></svg></span>
+            <h3>Fuerza</h3><p>Mancuernas, bandas y lastres para ganar fuerza en casa.</p>
+          </a>
+          <a class="category reveal" style="--i:1" href="#productos">
+            <span class="category__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5M20 12a8 8 0 0 1-14 5M18 3v4h-4M6 21v-4h4"/></svg></span>
+            <h3>Movilidad</h3><p>Esterillas y rodillos para moverte mejor cada día.</p>
+          </a>
+          <a class="category reveal" style="--i:2" href="#productos">
+            <span class="category__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l2-6 4 12 2-6h6"/></svg></span>
+            <h3>Cardio</h3><p>Cuerdas y accesorios para subir pulsaciones sin salir.</p>
+          </a>
+          <a class="category reveal" style="--i:3" href="#productos">
+            <span class="category__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/></svg></span>
+            <h3>Tonificar</h3><p>Material ligero para definir y mantener tu forma.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+ 
+    <section class="section section--alt" id="productos">
+      <div class="container">
+        <h2 class="reveal">Productos destacados</h2>
+        <div class="chips reveal" role="group" aria-label="Filtrar por categoría">
+          <button class="chip" type="button" data-filter="all" aria-pressed="true">Todos</button>
+          <button class="chip" type="button" data-filter="Fuerza" aria-pressed="false">Fuerza</button>
+          <button class="chip" type="button" data-filter="Movilidad" aria-pressed="false">Movilidad</button>
+          <button class="chip" type="button" data-filter="Cardio" aria-pressed="false">Cardio</button>
+        </div>
+        <div class="grid">
+          <article class="product reveal" style="--i:0" data-category="Fuerza">
+            <div class="product__img"><img src="img/banda.svg" alt="Banda elástica de resistencia" width="400" height="300" loading="lazy"></div>
+            <div class="product__body"><p class="product__cat">Fuerza</p><h3>Banda elástica de resistencia</h3><p class="product__price">[PRECIO]</p><button class="btn btn--outline btn--block add" type="button">Añadir al carrito</button></div>
+          </article>
+          <article class="product reveal" style="--i:1" data-category="Movilidad">
+            <div class="product__img"><img src="img/esterilla.svg" alt="Esterilla antideslizante" width="400" height="300" loading="lazy"></div>
+            <div class="product__body"><p class="product__cat">Movilidad</p><h3>Esterilla antideslizante</h3><p class="product__price">[PRECIO]</p><button class="btn btn--outline btn--block add" type="button">Añadir al carrito</button></div>
+          </article>
+          <article class="product reveal" style="--i:2" data-category="Fuerza">
+            <div class="product__img"><img src="img/mancuernas.svg" alt="Set de mancuernas ajustables" width="400" height="300" loading="lazy"></div>
+            <div class="product__body"><p class="product__cat">Fuerza</p><h3>Set de mancuernas ajustables</h3><p class="product__price">[PRECIO]</p><button class="btn btn--outline btn--block add" type="button">Añadir al carrito</button></div>
+          </article>
+          <article class="product reveal" style="--i:3" data-category="Cardio">
+            <div class="product__img"><img src="img/cuerda.svg" alt="Cuerda de saltar" width="400" height="300" loading="lazy"></div>
+            <div class="product__body"><p class="product__cat">Cardio</p><h3>Cuerda de saltar</h3><p class="product__price">[PRECIO]</p><button class="btn btn--outline btn--block add" type="button">Añadir al carrito</button></div>
+          </article>
+        </div>
+      </div>
+    </section>
+ 
+    <section class="section section--dark" id="como-funciona">
+      <div class="container">
+        <h2 class="reveal">Así de fácil</h2>
+        <ol class="steps">
+          <li class="reveal" style="--i:0"><span class="steps__num">1</span><h3>Elige tu objetivo</h3><p>Filtra por fuerza, movilidad, cardio o tonificar y por tu nivel.</p></li>
+          <li class="reveal" style="--i:1"><span class="steps__num">2</span><h3>Compra con tranquilidad</h3><p>Añade al carrito y paga en pocos pasos.</p></li>
+          <li class="reveal" style="--i:2"><span class="steps__num">3</span><h3>Sigue tu pedido</h3><p>Nuestros proveedores lo envían y tú ves el seguimiento.</p></li>
+        </ol>
+      </div>
+    </section>
+ 
+    <section class="cta">
+      <div class="container cta__inner reveal">
+        <h2>Crea tu cuenta y empieza hoy</h2>
+        <a class="btn btn--light" href="#">Registrarme</a>
+      </div>
+    </section>
+  </main>
+ 
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a class="brand" href="#" aria-label="Movara, inicio"><img src="logo.svg" alt="" width="32" height="32"><span class="brand__name brand__name--sm">Movara</span></a>
+      <p>Proyecto de desarrollo con fines formativos, no es un negocio en funcionamiento.</p>
+    </div>
+  </footer>
+</body>
+</html>

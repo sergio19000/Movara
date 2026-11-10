@@ -1,183 +1,198 @@
 # Movara
  
-*Proyecto de desarrollo con fines formativos, no es un negocio en funcionamiento.*
+**Tienda online de entrenamiento en casa, pensada para empezar sin perderse.**
+Un catálogo corto, filtrado por objetivo, con compra en pocos pasos y envío directo desde el proveedor.
  
-## 1. Idea en una frase
+> Proyecto de desarrollo con fines formativos, no es un negocio en funcionamiento.
+> **Estado:** diseño del front end terminado y back end en desarrollo. Más detalles en [Estado del proyecto](#estado-del-proyecto).
  
-Una tienda online de accesorios de entrenamiento en casa para personas que quieren empezar a hacer ejercicio sin gimnasio, que vende productos de proveedores externos (dropshipping) sin mantener stock propio.
+---
  
-## 2. Problema y propuesta de valor
+## ¿Qué es Movara?
  
-- **Problema:** quien empieza a entrenar en casa no sabe qué material comprar y se pierde entre cientos de productos de calidad desigual.
-- **Propuesta de valor:** un catálogo corto, filtrado por objetivo (tonificar, movilidad, fuerza, cardio) y por nivel, en lugar de "vender de todo".
-- **Posible diferenciador (fase posterior):** recomendación de productos con IA según el objetivo del usuario.
-## 3. Usuarios
+Movara es una tienda online de accesorios de entrenamiento en casa que funciona con dropshipping: los pedidos se envían directamente desde proveedores externos, sin stock propio.
  
-| Perfil | Descripción |
+En lugar de mostrar cientos de productos, ofrece un catálogo corto organizado por objetivo (fuerza, movilidad, cardio y tonificar), para que una persona que empieza a entrenar sepa qué necesita y pueda comprarlo en pocos pasos.
+ 
+## El origen del proyecto
+ 
+Entrenar en casa es más fácil que nunca, pero elegir el material sigue siendo un laberinto: miles de productos, reseñas contradictorias y calidades desiguales.
+ 
+Movara parte de una pregunta sencilla: **¿y si, en vez de ofrecer más opciones, ofreciéramos las adecuadas?**
+ 
+## Visión del producto
+ 
+Un producto pequeño y claro que resuelva bien un solo problema. El primer objetivo es validar el flujo completo (elegir, comprar, pagar y seguir el pedido) con el mínimo de funciones, y crecer solo a partir de lo que se compruebe con usuarios reales.
+ 
+---
+ 
+## Planificador de Producto MVP
+ 
+### 1. Problema 🎯
+Las personas que empiezan a entrenar en casa se pierden entre cientos de productos de fitness y no saben qué material comprar según su objetivo y su nivel.
+ 
+### 2. Beneficio Principal 💡
+Una tienda online con un catálogo corto de accesorios de entrenamiento en casa, filtrado por objetivo, que se compra en pocos pasos y se envía directamente desde el proveedor.
+ 
+### 3. Características Principales ⚙️
+1. Catálogo con filtro por objetivo (fuerza, movilidad, cardio, tonificar) y ficha de producto.
+2. Cuenta de usuario (registro e inicio de sesión) con carrito y pedido.
+3. Pago en modo test y envío del pedido a un proveedor simulado, con número de seguimiento.
+Descartado para el MVP: ~~reseñas~~, ~~cupones~~, ~~panel de administración completo~~, ~~recomendador con IA~~, ~~emails de confirmación~~.
+ 
+### 4. Flujo de Usuario 🛤️
+1. Entra en la tienda y elige su objetivo de entrenamiento.
+2. Ve los productos filtrados y abre la ficha de uno.
+3. Lo añade al carrito e inicia sesión o se registra.
+4. Paga el pedido (modo test).
+5. Ve la confirmación con el estado del pedido y su número de seguimiento.
+### 5. Éxito 🏆
+Un usuario nuevo completa una compra, desde que elige su objetivo hasta que el pago queda confirmado, en menos de 3 minutos y sin ayuda.
+ 
+---
+ 
+## Funcionalidades
+ 
+| Funcionalidad | Descripción | Estado |
+|---|---|---|
+| Catálogo con filtro por objetivo | Productos organizados por fuerza, movilidad, cardio y tonificar, con ficha de detalle | Interfaz hecha, back end pendiente |
+| Cuenta de usuario | Registro e inicio de sesión con JWT | Planificado |
+| Carrito y pedido | Añadir productos, confirmar datos de envío y crear el pedido | Interfaz de demostración, lógica pendiente |
+| Pago en modo test | Cobro con Stripe en modo de pruebas | Planificado |
+| Envío a proveedor simulado | El pedido pagado se envía a una API de pruebas, que devuelve un número de seguimiento | Planificado |
+| Modo claro y modo noche | Se adapta al sistema y se puede cambiar manualmente | Disponible |
+ 
+## Principios de diseño
+ 
+- **Pocas opciones, bien elegidas.** Un catálogo corto ayuda más que uno enorme.
+- **Empezar por el objetivo de la persona.** Se navega por lo que quiere conseguir, no por tipos de producto.
+- **Comprar en pocos pasos.** Cada pantalla extra es una oportunidad de abandonar.
+- **Ser claro con precios y plazos.** El usuario debe saber qué paga y cuándo recibirá el pedido.
+- **Construir lo mínimo antes que lo máximo.** Cada función nueva tiene que justificarse con un problema real.
+## Tecnologías
+ 
+| Capa | Tecnologías |
 |---|---|
-| **Cliente** | Principiante o intermedio, 18-40 años, compra desde el móvil, busca precio razonable y envío claro. |
-| **Administrador** | Gestiona el catálogo, revisa los pedidos y los reenvía al proveedor. |
+| Front end | HTML · CSS · JavaScript (actual) · React (previsto) |
+| Back end | Node.js · Express |
+| Base de datos | PostgreSQL |
+| Autenticación | JWT |
+| Pagos | Stripe (modo test) |
+| Infraestructura | Docker · despliegue en la nube |
+| Control de versiones | Git y GitHub |
  
-## 4. Funciones del MVP
+## Seguridad
  
-| Prioridad | Funciones |
-|---|---|
-| **Imprescindibles** | Registro y login (JWT), catálogo con búsqueda y filtros por categoría, ficha de producto, carrito, creación de pedido, pago en modo test (Stripe) |
-| **Deseables** | Panel de administración (alta y edición de productos, lista de pedidos), estados del pedido, email de confirmación |
-| **Futuras** | Reseñas, cupones, recomendador con IA, sincronización automática de stock, varios proveedores |
+Decisiones previstas para el back end (aún sin implementar):
  
-## 5. Flujo de dropshipping
- 
-1. El cliente paga el pedido.
-2. El sistema lo registra como **pagado** y lo envía al proveedor (en el MVP, una API simulada).
-3. El proveedor devuelve un número de seguimiento.
-4. El pedido pasa a **enviado** y se informa al cliente.
-5. Si el producto no está disponible, el pedido se marca como **incidencia** y el administrador decide: reembolso o alternativa.
-## 6. Métricas de éxito del MVP
- 
-- Un usuario completa una compra de principio a fin sin ayuda.
-- El pedido pasa por todos sus estados sin errores.
-- No se pueden crear pedidos con productos agotados.
-## 7. Supuestos y riesgos
- 
-- Los proveedores pueden tardar en enviar, lo que afecta a la experiencia del cliente.
-- Los márgenes son ajustados y las devoluciones cuestan dinero.
-- Un negocio real implicaría alta como autónomo, normativa de consumo e IVA, fuera del alcance de este MVP.
-- El pago es solo en modo test y el proveedor es simulado.
-## 8. Fuera de alcance (a propósito)
- 
-Pasarelas de pago reales, gestión fiscal, logística real, aplicación móvil nativa.
- 
-## 9. Stack previsto
- 
-React · Node.js · PostgreSQL · JWT · Stripe (modo test) · Docker · despliegue en la nube
- 
+- Contraseñas almacenadas con hash, nunca en texto plano.
+- Autenticación con JWT y rutas protegidas.
+- El precio y el total del pedido se calculan siempre en el servidor.
+- Validación de los datos de entrada y CORS restringido a los dominios autorizados.
+- Claves y credenciales en variables de entorno, fuera del repositorio.
+- Transacciones en la base de datos para evitar vender dos veces el último producto.
 ---
  
-## 10. Documento de requisitos (generado con IA)
+## Documentación generada con IA
  
-**Prompt utilizado:**
+### Prompt utilizado
  
+Modelo de IA utilizado: Claude (Anthropic).
+ 
+```text
+Actúa como un gerente de producto experto y crea un documento de requisitos de Producto Mínimo Viable (MVP) basado en la entrada proporcionada, siguiendo la estructura del Planificador de Producto MVP. El objetivo es diseñar la versión más simple de un producto que resuelva un problema específico del usuario, centrándose en las características principales y evitando la expansión descontrolada de características, la sobre especificación o la complejidad innecesaria. Utiliza la siguiente entrada para completar el planificador y proponer características mínimas y efectivas y un flujo de usuario. Sugiere tecnologías solo si es necesario, priorizando la simplicidad y la flexibilidad, y evita imponer restricciones alucinadas o requisitos demasiado detallados. Asegúrate de que el resultado sea claro, conciso y procesable, con una métrica de éxito medible.
+ 
+**Entrada**:
+- Problema: Las personas que empiezan a entrenar en casa se pierden entre cientos de productos de fitness y no saben qué material comprar según su objetivo y su nivel.
+- Beneficio Principal: Una tienda online con un catálogo corto de accesorios de entrenamiento en casa, filtrado por objetivo, que se compra en pocos pasos y se envía directamente desde el proveedor.
+ 
+**Instrucciones**:
+1. **Problema**: Reafirma el problema y el usuario de la entrada.
+2. **Beneficio Principal**: Reafirma el beneficio principal de la entrada.
+3. **Características Principales**: Propón exactamente 3 características imprescindibles para ofrecer el beneficio principal. Excluye características 'agradables de tener' como diseños avanzados o funcionalidades complejas. Asegúrate de que las características sean simples y estén alineadas con la metodología MVP.
+4. **Flujo de Usuario**: Describe de 3 a 5 pasos simples que muestren cómo el usuario interactúa con el producto para lograr el beneficio principal. Mantenlo lineal y mínimo.
+5. **Éxito**: Define 1 objetivo medible para evaluar si el producto resuelve el problema (por ejemplo, tiempo ahorrado, satisfacción del usuario).
+6. **Opcional**: Si es relevante, sugiere 1-2 tecnologías o herramientas para la implementación, pero solo si mejoran la simplicidad o la velocidad de desarrollo. Evita opiniones firmes sobre las pilas tecnológicas.
+ 
+**Formato de Salida**:
+Utiliza la estructura del Planificador de Producto MVP:
+- Problema: [Problema reafirmado]
+- Beneficio Principal: [Beneficio reafirmado]
+- Características Principales:
+  1. [Característica 1]
+  2. [Característica 2]
+  3. [Característica 3]
+- Flujo de Usuario:
+  1. [Paso 1]
+  2. [Paso 2]
+  3. [Paso 3]
+- Éxito: [Objetivo medible]
+- [Opcional] Tecnologías Sugeridas: [1-2 herramientas simples, si aplica]
+ 
+**Restricciones**:
+- Apégate a la metodología MVP: enfócate en lo mínimo necesario para validar el producto.
+- Evita la expansión descontrolada de características, la sobre especificación o las limitaciones técnicas imaginarias.
+- Mantén la respuesta concisa (menos de 300 palabras).
+- Si la entrada está incompleta, haz suposiciones razonables basadas en el problema proporcionado y anótalas.
 ```
-Actúa como analista de producto. Con esta descripción de un MVP de tienda dropshipping, genera historias de usuario con criterios de aceptación y prioriza por MoSCoW.
-```
  
-**Roles:** Cliente (C) y Administrador (A).
+### Resultado generado por la IA
  
-### MUST (imprescindible)
+- **Problema:** Las personas que empiezan a entrenar en casa se pierden entre cientos de productos de fitness y no saben qué material comprar según su objetivo y su nivel.
+- **Beneficio Principal:** Una tienda online con un catálogo corto de accesorios de entrenamiento en casa, filtrado por objetivo, que se compra en pocos pasos y se envía directamente desde el proveedor.
+- **Características Principales:**
+  1. Catálogo de productos con filtros por objetivo, búsqueda por nombre y ficha de detalle.
+  2. Carrito y pedido con cuenta de usuario.
+  3. Pago en modo test y envío automático del pedido al proveedor, con email de confirmación.
+- **Flujo de Usuario:**
+  1. Entra en la tienda y elige su objetivo.
+  2. Explora los productos filtrados y abre uno.
+  3. Lo añade al carrito.
+  4. Completa sus datos y paga.
+  5. Recibe un email con la confirmación y el seguimiento.
+- **Éxito:** Al menos el 80 % de los usuarios de prueba completan una compra en menos de 3 minutos.
+- **Tecnologías Sugeridas:** React con Node.js y PostgreSQL; Stripe en modo test para el pago.
+- **Suposiciones:** El catálogo inicial tiene unos 10 productos y el proveedor se simula con una API de pruebas.
+### Evaluación crítica
  
-#### HU-01 Registro e inicio de sesión
-Como **cliente**, quiero registrarme e iniciar sesión para poder comprar y ver mis pedidos.
-- Puedo crear una cuenta con email y contraseña.
-- No se permite registrar un email ya existente.
-- La contraseña tiene un mínimo de 8 caracteres.
-- La contraseña se guarda cifrada (hash), nunca en texto plano.
-- Al iniciar sesión recibo un token JWT y las rutas protegidas lo exigen.
-- Con credenciales incorrectas se muestra un error sin revelar cuál falló.
-#### HU-02 Ver catálogo
-Como **cliente**, quiero ver el listado de productos para elegir qué comprar.
-- Cada producto muestra imagen, nombre, precio y disponibilidad.
-- El listado está paginado.
-- Los productos agotados se muestran como "No disponible".
-#### HU-03 Buscar y filtrar
-Como **cliente**, quiero buscar y filtrar por categoría y objetivo para encontrar material adecuado a mi nivel.
-- Puedo buscar por nombre.
-- Puedo filtrar por categoría (fuerza, movilidad, cardio, tonificar).
-- Los filtros se pueden combinar y quitar.
-- Si no hay resultados, aparece un mensaje claro.
-#### HU-04 Ficha de producto
-Como **cliente**, quiero ver el detalle de un producto para decidir si lo compro.
-- Se muestran descripción, precio, imágenes y plazo de envío estimado.
-- Puedo añadirlo al carrito desde la ficha.
-- Un producto agotado no se puede añadir.
-#### HU-05 Carrito
-Como **cliente**, quiero gestionar un carrito para revisar mi compra antes de pagar.
-- Puedo añadir, quitar y cambiar la cantidad de productos.
-- El total se recalcula al instante.
-- No puedo pedir más unidades que las disponibles.
-- El carrito se conserva si recargo la página.
-#### HU-06 Crear pedido
-Como **cliente**, quiero confirmar mi pedido con mis datos de envío para recibirlo en casa.
-- Debo estar autenticado.
-- Introduzco dirección, ciudad, código postal y teléfono, con validación.
-- El pedido se crea con estado "pendiente de pago".
-- Se guarda el precio vigente en el momento de la compra.
-- El total se calcula en el servidor, nunca se confía en el precio que envía el navegador.
-#### HU-07 Pago en modo test
-Como **cliente**, quiero pagar mi pedido para completar la compra.
-- El pago se hace con Stripe en modo test.
-- Si el pago es correcto, el pedido pasa a "pagado".
-- Si falla, el pedido sigue "pendiente" y veo un mensaje de error.
-- El estado se actualiza al recibir la confirmación (webhook), no solo desde el navegador.
-#### HU-08 Evitar ventas sin stock
-Como **administrador**, quiero que el sistema impida vender productos agotados para evitar incidencias.
-- Al crear el pedido se comprueba la disponibilidad.
-- Dos compras simultáneas del último artículo no pueden ser ambas válidas (transacción en base de datos).
-#### HU-09 Envío del pedido al proveedor (simulado)
-Como **administrador**, quiero que los pedidos pagados lleguen al proveedor para que los envíe.
-- Al pasar a "pagado", se envía automáticamente a la API simulada del proveedor.
-- La respuesta devuelve un número de seguimiento que se guarda en el pedido.
-- El pedido pasa a "enviado".
-- Si el proveedor falla, el pedido no se pierde: queda en "pagado" con el error registrado para reintentarlo.
+Revisé la salida de la IA comparándola con mi planificador y con lo que puedo construir y probar en un MVP, con foco en el back end.
+ 
+- **Lo que mantuve:** el filtro por objetivo en el catálogo, porque es lo que responde directamente al problema. También las tecnologías sugeridas, que coinciden con las que ya manejo (React, Node.js, PostgreSQL) y con un pago en modo test.
+- **Lo que quité y por qué:**
+  - La búsqueda por nombre: con un catálogo corto de unos 10 productos, el filtro por objetivo es suficiente.
+  - El email de confirmación: depende de un servicio externo y no es necesario para validar la compra. La confirmación se muestra en pantalla.
+- **Lo que añadí o corregí:**
+  - Hice explícito el registro e inicio de sesión (característica 2). La IA hablaba de "cuenta de usuario" sin concretar, y hace falta para asociar cada pedido a una persona.
+  - Ajusté la métrica de éxito: "80 % de usuarios" exige una muestra que no tengo. Prefiero una prueba con unas 5 personas, observando si completan la compra sin ayuda en menos de 3 minutos.
+- **Lo que me parece más difícil:** confirmar el pago con Stripe de forma fiable (el estado del pedido debe actualizarse al recibir la confirmación del pago, no solo desde el navegador) y evitar vender un producto agotado.
+- **Sobre el uso de la IA:** es un buen punto de partida y respeta bien el límite de 3 características, pero tiende a añadir extras (búsqueda, email) que no son imprescindibles. Por eso hay que revisarla en lugar de aceptarla tal cual.
 ---
  
-### SHOULD (importante, si hay tiempo)
+## Roadmap
  
-#### HU-10 Panel de administración de productos
-Como **administrador**, quiero crear, editar y desactivar productos para mantener el catálogo.
-- Solo usuarios con rol admin acceden.
-- Puedo crear y editar nombre, descripción, precio, categoría, imagen y stock.
-- Puedo desactivar un producto sin borrar su historial de pedidos.
-#### HU-11 Lista y estados de pedidos
-Como **administrador**, quiero ver todos los pedidos y su estado para hacer seguimiento.
-- Puedo filtrar por estado (pendiente, pagado, enviado, entregado, incidencia).
-- Veo el detalle de cada pedido y su cliente.
-#### HU-12 Mis pedidos
-Como **cliente**, quiero consultar mis pedidos y su estado para saber cuándo llegará mi compra.
-- Veo mi historial ordenado por fecha.
-- Veo el número de seguimiento cuando existe.
----
+**Disponible**
+- Planificación del MVP y documentación
+- Diseño del front end: portada, categorías, productos, modo claro y noche, animaciones al hacer scroll
+**En desarrollo**
+- API con Node.js, Express y PostgreSQL
+- Registro e inicio de sesión con JWT
+**Próximas versiones**
+- Catálogo, carrito y pedidos conectados a la base de datos
+- Pago en modo test con Stripe y envío al proveedor simulado
+- Tests, documentación de la API y despliegue con Docker
+**Fuera del MVP**
+- Reseñas, cupones, panel de administración completo, recomendador con IA, varios proveedores
+## Estado del proyecto
  
-### COULD (deseable, si sobra tiempo)
+El repositorio contiene la documentación del MVP y el front end estático de la tienda. El back end está en desarrollo y se irá incorporando por fases.
  
-#### HU-13 Email de confirmación
-Como **cliente**, quiero recibir un email al pagar para tener constancia de mi compra.
-- Se envía al pasar a "pagado", con resumen del pedido.
-#### HU-14 Gestión de incidencias
-Como **administrador**, quiero marcar un pedido como incidencia cuando el proveedor no puede cumplirlo, para decidir entre reembolso o alternativa.
-- Un pedido pasa a "incidencia" si el proveedor responde con error o sin stock.
-- Puedo registrar la decisión tomada.
-#### HU-15 Despliegue con Docker y documentación de la API
-Como **desarrollador**, quiero ejecutar el proyecto con un comando y consultar la API documentada.
-- `docker compose up` levanta frontend, backend y base de datos.
-- Existe documentación de endpoints (Swagger/OpenAPI).
----
+## Sobre mí
  
-### WON'T (fuera de este MVP)
+Soy Sergio Campuzano Núñez, desarrollador Full Stack junior con interés en el desarrollo back end. Movara es el proyecto con el que practico el diseño de producto, las APIs REST y las bases de datos relacionales.
  
-- Recuperación de contraseña y verificación de email.
-- Reseñas y valoraciones de clientes.
-- Cupones y descuentos.
-- Recomendador de productos con IA.
-- Sincronización automática de stock con varios proveedores.
-- Pagos reales, gestión fiscal y logística real.
-- Aplicación móvil nativa.
----
+Uso Claude (Anthropic) como apoyo para planificar, explorar alternativas y revisar decisiones, y reviso y decido yo lo que se incorpora al proyecto.
  
-## 11. Evaluación crítica
+## Contacto
  
-Usé la IA para generar el primer borrador de los requisitos y después lo revisé pensando en lo que puedo construir y probar en un MVP, con foco en el back end.
+[LinkedIn](https://www.linkedin.com/in/sergiocampuzano) · [GitHub](https://github.com/sergio19000)
  
-- **Qué moví de prioridad y por qué:** pasé el email de confirmación (HU-13) de "Should" a "Could". Depende de un servicio externo de correo y no aporta al flujo principal de compra. Prefiero asegurar antes el pago y el envío al proveedor.
-- **Qué añadí y por qué:**
-  - Un mínimo de 8 caracteres en la contraseña (HU-01), porque el borrador no definía ninguna regla.
-  - Que el carrito se conserve al recargar la página (HU-05), ya que es un comportamiento que un usuario espera.
-  - Que el pedido no se pierda si falla el proveedor (HU-09), dejándolo en "pagado" con el error registrado para reintentarlo. El borrador solo cubría el caso en que todo sale bien.
-  - La recuperación de contraseña como "Won't": es útil, pero la dejo fuera conscientemente para no ampliar el alcance.
-- **Qué corregí y por qué:** el borrador dejaba abierto de dónde sale el precio del pedido. Añadí que el total se calcula siempre en el servidor (HU-06), porque confiar en el precio que manda el navegador permitiría manipularlo.
-- **Qué partes me parecen más difíciles:** los webhooks de Stripe (HU-07) y la prevención de ventas simultáneas del último artículo (HU-08), que requiere transacciones en la base de datos. Si voy justo de tiempo, simplificaré primero la integración con el proveedor, que ya es simulada.
-- **Qué cambiaría con más tiempo:** añadiría tests de integración para el flujo de pago y pedido, documentación de la API con Swagger y un panel de administración más completo.
-- **Sobre el uso de la IA:** el documento es un buen punto de partida, pero daba por buenos criterios vagos y no pensaba en los casos de error. Por eso hay que revisarlo en vez de copiarlo tal cual.
-Qué partes me parecen más difíciles: los webhooks de Stripe (HU-07) y la prevención de ventas simultáneas del último artículo (HU-08), que requiere transacciones en la base de datos. Si voy justo de tiempo, simplificaré primero la integración con el proveedor, que ya es simulada.
-Qué cambiaría con más tiempo: añadiría tests de integración para el flujo de pago y pedido, documentación de la API con Swagger y un panel de administración más completo.
-Sobre el uso de la IA: el documento es un buen punto de partida, pero daba por buenos criterios vagos y no pensaba en los casos de error. Por eso hay que revisarlo en vez de copiarlo tal cual.

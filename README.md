@@ -3,11 +3,6 @@
 **Tienda online de entrenamiento en casa, pensada para empezar sin perderse.**
 Un catálogo corto, filtrado por objetivo, con compra en pocos pasos y envío directo desde el proveedor.
  
-> Proyecto de desarrollo con fines formativos, no es un negocio en funcionamiento.
-> **Estado:** diseño del front end terminado y back end en desarrollo. Más detalles en [Estado del proyecto](#estado-del-proyecto).
- 
----
- 
 ## ¿Qué es Movara?
  
 Movara es una tienda online de accesorios de entrenamiento en casa que funciona con dropshipping: los pedidos se envían directamente desde proveedores externos, sin stock propio.

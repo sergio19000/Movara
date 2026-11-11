@@ -131,23 +131,6 @@ Utiliza la estructura del Planificador de Producto MVP:
 - Si la entrada está incompleta, haz suposiciones razonables basadas en el problema proporcionado y anótalas.
 ```
  
-### Resultado generado por la IA
- 
-- **Problema:** Las personas que empiezan a entrenar en casa se pierden entre cientos de productos de fitness y no saben qué material comprar según su objetivo y su nivel.
-- **Beneficio Principal:** Una tienda online con un catálogo corto de accesorios de entrenamiento en casa, filtrado por objetivo, que se compra en pocos pasos y se envía directamente desde el proveedor.
-- **Características Principales:**
-  1. Catálogo de productos con filtros por objetivo, búsqueda por nombre y ficha de detalle.
-  2. Carrito y pedido con cuenta de usuario.
-  3. Pago en modo test y envío automático del pedido al proveedor, con email de confirmación.
-- **Flujo de Usuario:**
-  1. Entra en la tienda y elige su objetivo.
-  2. Explora los productos filtrados y abre uno.
-  3. Lo añade al carrito.
-  4. Completa sus datos y paga.
-  5. Recibe un email con la confirmación y el seguimiento.
-- **Éxito:** Al menos el 80 % de los usuarios de prueba completan una compra en menos de 3 minutos.
-- **Tecnologías Sugeridas:** React con Node.js y PostgreSQL; Stripe en modo test para el pago.
-- **Suposiciones:** El catálogo inicial tiene unos 10 productos y el proveedor se simula con una API de pruebas.
 ### Evaluación crítica
  
 Revisé la salida de la IA comparándola con mi planificador y con lo que puedo construir y probar en un MVP, con foco en el back end.
